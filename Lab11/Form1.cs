@@ -49,23 +49,21 @@ namespace Lab11
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = LoginTextBox.Text;
-            string password = PasswordTextBox.Text;
-            string confirmPassword = ConfirmPasswordTextBox.Text;
-            string email = EmailTextBox.Text;
+            string username = "Artem";
+            string password = "12345";
+
             bool isTermsAccepted = agreementCheckBox.Checked;
 
-            if (password != confirmPassword)
+
+            if (string.IsNullOrEmpty(LoginTextBox.Text) || string.IsNullOrEmpty(PasswordTextBox.Text))
             {
-                ErrorMessageLabel.Text = "Password does not match";
+                ErrorMessageLabel.Text = "All lines must be filled in";
                 ErrorMessageLabel.ForeColor = Color.Red;
                 return;
             }
-
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) 
-                || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(email))
+            else if (LoginTextBox.Text != username || PasswordTextBox.Text != password)
             {
-                ErrorMessageLabel.Text = "All lines must be filled in";
+                ErrorMessageLabel.Text = "Wrong login or password";
                 ErrorMessageLabel.ForeColor = Color.Red;
                 return;
             }
@@ -77,13 +75,11 @@ namespace Lab11
                 return;
             }
 
-            ErrorMessageLabel.Text = "Registr succesful";
+            ErrorMessageLabel.Text = "Login succesful";
             ErrorMessageLabel.ForeColor = Color.Green;
 
             LoginTextBox.Clear();
             PasswordTextBox.Clear();
-            ConfirmPasswordTextBox.Clear();
-            EmailTextBox.Clear();
 
             agreementCheckBox.Checked = false;
 
